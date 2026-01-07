@@ -1,0 +1,14 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php_container
+    volumes:
+      - ./:/var/www/html:delegated
+    extra_hosts:
+      - "host.docker.internal:host-gateway" # Essential for Linux users
+    environment:
+      - XDEBUG_MODE=debug
+      - XDEBUG_CONFIG=client_host=host.docker.internal client_port=9003 log=./tmp/xdebug.log
+      - PHP_IDE_CONFIG=serverName=sortedlist-server
