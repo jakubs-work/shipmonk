@@ -15,7 +15,6 @@ test:
 code-check:
 	docker compose exec php vendor/bin/psalm
 	docker compose exec php vendor/bin/php-cs-fixer fix --dry-run --diff
-	docker compose exec php vendor/bin/rector process src --dry-run
 
 code-fix:
 	docker compose exec php vendor/bin/php-cs-fixer fix

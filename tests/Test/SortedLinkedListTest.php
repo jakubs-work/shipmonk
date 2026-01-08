@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Test;
 
+use Generator;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
@@ -62,7 +63,7 @@ class SortedLinkedListTest extends TestCase
         $this->assertEquals($expected, $list->jsonSerialize());
     }
 
-    public function testInsertArray()
+    public function testInsertArray(): void
     {
         $array = ['banana', 'apple', 'cherry'];
         $list  = new SortedLinkedList();
@@ -70,7 +71,7 @@ class SortedLinkedListTest extends TestCase
         $this->assertEquals(['apple', 'banana', 'cherry'], $list->jsonSerialize());
     }
 
-    public function testInsertMixedArray()
+    public function testInsertMixedArray(): void
     {
         $array = ['banana', 1000, 'cherry'];
         $list  = new SortedLinkedList();
@@ -78,7 +79,7 @@ class SortedLinkedListTest extends TestCase
         $list->insertValues($array);
     }
 
-    public function testFromArray()
+    public function testFromArray(): void
     {
         $array = ['banana', 'apple', 'cherry'];
         $list  = SortedLinkedList::fromArray($array);
@@ -91,6 +92,7 @@ class SortedLinkedListTest extends TestCase
         $list = SortedLinkedList::fromArray($values);
         $this->assertEquals($list->find($search)?->value, $searchResult?->value);
     }
+    
     public static function invalidInitializedTypeScenarios(): iterable
     {
         yield 'initialized integer list type - inserting string' => [ListType::INTEGER, 'stringValue'];
@@ -180,7 +182,7 @@ class SortedLinkedListTest extends TestCase
         ];
     }
 
-    public static function findOnListScenarios()
+    public static function findOnListScenarios(): Generator
     {
         yield 'empty list' => [
             [],

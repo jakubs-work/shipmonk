@@ -194,7 +194,7 @@ final class SortedLinkedList implements LinkedListInterface
 
 
     /**
-     * @param int|string $value
+     * @param T $value
      * @return void
      */
     private function validateValueType(int|string $value): void

@@ -8,6 +8,7 @@ use Countable;
 use Generator;
 use IteratorAggregate;
 use JsonSerializable;
+use Override;
 
 /**
  * @template T of int|string
@@ -37,12 +38,12 @@ interface LinkedListInterface extends IteratorAggregate, JsonSerializable, Count
     /**
      * @return array<int, T>
      */
-    #[\Override]
+    #[Override]
     public function jsonSerialize(): array;
 
     /**
      * @return Generator<int, T>
      */
-    #[\Override]
+    #[Override]
     public function getIterator(): Generator;
 }
